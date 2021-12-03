@@ -1369,9 +1369,7 @@ def update_display_graph(data, graph_type, clickData, tooltips_ison):
                                                 "<b>Player Assisted:</b> %{customdata[1]}<br>" +
                                                 "<b>Shot Type Created:</b> %{customdata[0]}<br>" +
                                                 "<b>Pass Distance:</b> %{customdata[6]} ft.<br>" +
-                                                "<b>Possession Start Type:</b> %{customdata[5]}<br>"+
-                                                "%{customdata[7]}, %{customdata[8]},"+
-                                                "%{customdata[9]}, %{customdata[10]}," if tooltips_ison else None
+                                                "<b>Possession Start Type:</b> %{customdata[5]}<br>" if tooltips_ison else None
                                       )
         try:
             print('testing for kde')
