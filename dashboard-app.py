@@ -616,7 +616,7 @@ dashboard_page = dbc.Container([
                 #options=player_options,
                 searchable=True,
                 clearable=False,
-                value=201939,
+                value=101108,
                 persistence=True,
                 className='mb-3'
             ),
