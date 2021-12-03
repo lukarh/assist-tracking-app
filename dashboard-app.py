@@ -950,7 +950,7 @@ dashboard_page = dbc.Container([
                        style={'width': '100%'},
                        ),
             dbc.Tooltip(
-                "Click on a Scatter Point on the Court to view video of the play. ",
+                "Click on a Scatter Point on the Court before clicking this button to view video of the play. ",
                 target="open-modal-btn",
                 placement="top"
             ),
@@ -1376,7 +1376,7 @@ def update_display_graph(data, graph_type, clickData, tooltips_ison):
             if 'pointNumber' in clickData['points'][0].keys():
                 print('attempting kde...')
                 df = pd.DataFrame(data)
-                r, ref_x, ref_y = 35, clickData['points'][0]['customdata'][-5], clickData['points'][0]['customdata'][-4]
+                r, ref_x, ref_y = 35, clickData['points'][0]['customdata'][7], clickData['points'][0]['customdata'][8]
                 df['within_dist'] = df.apply(lambda x: True if (np.sqrt((ref_x - x['pass_x'])**2 + (ref_y - x['pass_y'])**2) <= r) else False, axis=1)
                 df['pass_angle'] = df['pass_angle'] * (math.pi/180)
                 filtered_df = df[df['within_dist'] == True]
