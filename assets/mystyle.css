@@ -1,0 +1,40 @@
+/* restyle radio items */
+.radio-group .form-check {
+  padding-left: 0;
+}
+
+.radio-group .btn-group > .form-check:not(:last-child) > .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.radio-group .btn-group > .form-check:not(:first-child) > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -1px;
+}
+
+.form-check {
+   width: 100%;
+}
+
+.Select.dcc_control.is-open {
+  max-height: 100%;
+  overflow-y: hidden;
+}
+
+.Select.dcc_control {
+  overflow-y: hidden;
+}
+
+.DateInput_input {
+  font-size: 16px
+}
+
+.DateInput_input_1 {
+  font-size: 16px
+}
+
+div.dropdown-menu {
+  width: 100%;
+}
