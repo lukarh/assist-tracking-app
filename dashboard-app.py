@@ -30,6 +30,9 @@ shottypes = ['AtRim','ShortMidRange','LongMidRange',
 directions = ['N','NEN','NE','ENE','E','ESE','SE','SES',
               'S','SWS','SW','WSW','W','WNW','NW','NWN']
 
+main_df = pd.read_csv('Data/main.csv')
+tracked_df = pd.read_csv('Data/tracked_data.csv')
+
 ##############################################################################
 ##############################################################################
 ##############################################################################
@@ -1086,8 +1089,7 @@ def update_input_toggle_info(graph_toggle):
 def update_player_data2(pid):
     print('-------------------------------------')
     print('updating stored-player-data-2', pid)
-    main_df = pd.read_csv('Data/tracked_data.csv')
-    player_df = main_df[main_df['assistplayerid'] == pid]
+    player_df = tracked_df[tracked_df['assistplayerid'] == pid]
     print('finished updating stored-player-data-2')
     return player_df.to_dict('records')
 
@@ -1224,7 +1226,7 @@ def update_image(pid):
 )
 def get_player_and_team_options(data):
     print('updating team and player options...')
-    allids_df = pd.read_csv('Data/main_data.csv')[['assistplayerid', 'assist_player', 'offense_team_id',
+    allids_df = main_df[['assistplayerid', 'assist_player', 'offense_team_id',
                                               'team', 'pass_x']]
     pids_df = pd.DataFrame(allids_df.groupby(['assistplayerid', 'assist_player']).size(
     ).reset_index().rename(columns={0: 'count',
