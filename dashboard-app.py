@@ -30,7 +30,7 @@ shottypes = ['AtRim','ShortMidRange','LongMidRange',
 directions = ['N','NEN','NE','ENE','E','ESE','SE','SES',
               'S','SWS','SW','WSW','W','WNW','NW','NWN']
 
-main_df = pd.read_csv('data/main.csv')
+main_df = pd.read_csv('data/main_data.csv')
 tracked_df = pd.read_csv('data/tracked_data.csv')
 
 ##############################################################################
