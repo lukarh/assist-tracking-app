@@ -2332,7 +2332,12 @@ def check_email(email, ):
 # callback to reload the user object
 @login_manager.user_loader
 def load_user(user_id):
-    return Users.query.get(int(user_id))
+    print('The current User ID is...', user_id)
+    try:
+        return User.query.get(int(user_id))
+    except:
+        return None
+    #return Users.query.get(int(user_id))
 
 
 ###main page callbacks
