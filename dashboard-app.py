@@ -2329,8 +2329,8 @@ def load_user(user_id):
     print('The current User ID is...', user_id)
     print('Trying to query by ID', Users.query.filter_by(id=user_id).first())
     try:
-        print('Querying for that ID specifically...', User.query.get(user_id))
-        return User.query.get(user_id)
+        print('Querying for that ID specifically...', Users.query.get(user_id))
+        return Users.query.get(user_id)
     except:
         print('Did not get any ID at all...')
         return None
