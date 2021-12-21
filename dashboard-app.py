@@ -1861,8 +1861,10 @@ def update_image(pid):
     Input(component_id='player-options', component_property='data'),
 )
 def get_player_and_team_options(data):
-    allids_df = main_df[['assistplayerid', 'assist_player', 'offense_team_id',
-                         'team', 'pass_x']]
+    conn = engine_two.connect()
+    results = conn.execute("SELECT assistplayerid, assist_player, offense_team_id, team, pass_x FROM nbatrackingdata")
+    allids_df = pd.DataFrame(results.fetchall(), columns=results.keys())
+    conn.close()
     pids_df = pd.DataFrame(allids_df.groupby(['assistplayerid', 'assist_player']).size(
     ).reset_index().rename(columns={0: 'count',
                                     'assist_player': 'label',
