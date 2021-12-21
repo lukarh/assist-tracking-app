@@ -2334,8 +2334,10 @@ def check_email(email, ):
 def load_user(user_id):
     print('The current User ID is...', user_id)
     try:
+        print('Querying for that ID specifically...', User.query.get(int(user_id)))
         return User.query.get(int(user_id))
     except:
+        print('Did not get any ID at all...')
         return None
     #return Users.query.get(int(user_id))
 
