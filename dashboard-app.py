@@ -1635,13 +1635,17 @@ app.layout = html.Div([
 )
 def render_page_content(pathname, is_admin):
     changed_id = [p['prop_id'] for p in callback_context.triggered][0]
+    print('-----------------')
     if pathname == '/login' and current_user.is_authenticated:
+        print('showing login screen and user is authenticated', pathname)
         logout_user()
         return login, True
     elif pathname == '/login' or current_user.is_authenticated == False:
+        print('showing login screen, but user is not authenticated', pathname)
         return login, True
     elif pathname == '/create':
         if is_admin == False:
+            print('showing create screen, but user has no admin access', pathname)
             return html.Div(
                 dbc.Container(
                     [
@@ -1655,11 +1659,14 @@ def render_page_content(pathname, is_admin):
                 ),
                 className="p-3 bg-light rounded-3",
             ), False
+        print('showing create screen and user has admin access', pathname)
         return create, False
     elif pathname == '/home':
+        print('showing home screen after logging in', pathname)
         return home, False
     elif pathname == '/tracking':
         if is_admin == False:
+            print('showing tracking screen, but user has no admin access', pathname)
             return html.Div(
                 dbc.Container(
                     [
@@ -1673,10 +1680,13 @@ def render_page_content(pathname, is_admin):
                 ),
                 className="p-3 bg-light rounded-3",
             ), False
+        print('showing tracking screen and user has admin access', pathname)
         return main_page, False
     elif pathname == '/dashboard':
+        print('showing dashboard screen', pathname)
         return dashboard_page, False
     else:
+        print('showing error page', pathname)
         return html.Div(
             dbc.Container(
                 [
