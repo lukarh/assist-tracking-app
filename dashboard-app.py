@@ -89,10 +89,7 @@ class Users(db.Model):
     email = db.Column(db.String(50), unique=True)
     password = db.Column(db.String(80))
     admin = db.Column(db.Boolean, nullable=False)
-
-
 Users_tbl = Table('users', Users.metadata)
-
 
 class TrackingData(db.Model):
     __tablename__ = 'nbatrackingdata',
@@ -150,8 +147,6 @@ class TrackingData(db.Model):
     pass_dist_range = db.Column(db.String(12))
     num_dribbles = db.Column(db.Integer)
     row_id = db.Column(db.Integer, primary_key=True)
-
-
 Tracking_tbl = Table('nbatrackingdata', TrackingData.metadata)
 
 server.config.update(
@@ -176,7 +171,6 @@ login_manager.login_view = '/login'
 # Create User class with UserMixin
 class Users(UserMixin, Users):
     pass
-
 
 home = dbc.Container([
     html.H1('About this App', className='mt-3'),
@@ -2333,6 +2327,7 @@ def check_email(email, ):
 @login_manager.user_loader
 def load_user(user_id):
     print('The current User ID is...', user_id)
+    print('Trying to query by ID', Users.query.filter_by(id=user_id).first())
     try:
         print('Querying for that ID specifically...', User.query.get(int(user_id)))
         return User.query.get(int(user_id))
