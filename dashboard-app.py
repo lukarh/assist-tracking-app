@@ -1635,10 +1635,10 @@ app.layout = html.Div([
 )
 def render_page_content(pathname, is_admin):
     changed_id = [p['prop_id'] for p in callback_context.triggered][0]
-    if (pathname == '/' or pathname == '/login') and current_user.is_authenticated:
+    if pathname == '/login' and current_user.is_authenticated:
         logout_user()
         return login, True
-    elif pathname == '/' or pathname == '/login' or current_user.is_authenticated == False:
+    elif pathname == '/login' or current_user.is_authenticated == False:
         return login, True
     elif pathname == '/create':
         if is_admin == False:
