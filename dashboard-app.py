@@ -1618,7 +1618,7 @@ app.layout = html.Div([
     dcc.Store(id='player-options', storage_type='session', data=[]),
     dcc.Store(id='team-options', storage_type='session', data=[]),
     dcc.Store(id='tracked-player-options', storage_type='session', data=[]),
-    dcc.Location(id='url'),
+    dcc.Location(id='url', pathname='/login'),
     navigation_bar,
     content])
 
