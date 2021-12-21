@@ -1635,7 +1635,7 @@ def render_page_content(pathname, is_admin):
         print('showing login screen and user is authenticated', pathname)
         logout_user()
         return login, True
-    elif pathname == '/login' or current_user.is_authenticated == False:
+    elif pathname == '/login' and current_user.is_authenticated == False:
         print('showing login screen, but user is not authenticated', pathname)
         return login, True
     elif pathname == '/create':
