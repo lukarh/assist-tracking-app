@@ -1636,6 +1636,7 @@ app.layout = html.Div([
 def render_page_content(pathname, is_admin):
     changed_id = [p['prop_id'] for p in callback_context.triggered][0]
     print('-----------------')
+    print(current_user, current_user.is_authenticated)
     if pathname == '/login' and current_user.is_authenticated:
         print('showing login screen and user is authenticated', pathname)
         logout_user()
