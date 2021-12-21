@@ -1618,7 +1618,7 @@ app.layout = html.Div([
     dcc.Store(id='player-options', storage_type='session', data=[]),
     dcc.Store(id='team-options', storage_type='session', data=[]),
     dcc.Store(id='tracked-player-options', storage_type='session', data=[]),
-    dcc.Location(id='url', pathname='/login'),
+    dcc.Location(id='url'),
     navigation_bar,
     content])
 
@@ -2447,7 +2447,7 @@ def update_trackingtable(data, tracking_columns, ):  # sort_by):
     Input(component_id='video-btn', component_property='n_clicks'),
     Input(component_id='player-select', component_property='value'),
     Input(component_id='autoplay-toggle', component_property='on'),
-    State(component_id='stored-player-data', component_property='data'),
+    Input(component_id='stored-player-data', component_property='data'),
     State(component_id='row-id', component_property='data'),
     State(component_id='row-id-input', component_property='value')
 )
