@@ -148,7 +148,8 @@ class TrackingData(db.Model):
 Tracking_tbl = Table('nbatrackingdata', TrackingData.metadata)
 
 server.config.update(
-    SECRET_KEY=os.urandom(12),
+    SECRET_KEY=os.environ['SECRET_KEY'],
+    #SECRET_KEY=os.urandom(12),
     SQLALCHEMY_DATABASE_URI='sqlite:///data.sqlite',
     SQLALCHEMY_TRACK_MODIFICATIONS=False,
     SQLALCHEMY_BINDS={
