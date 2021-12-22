@@ -2199,7 +2199,6 @@ def successful(login, input1, input2, ):
     user = Users.query.filter_by(username=input1).first()
     changed_id = [p['prop_id'] for p in callback_context.triggered][0]
     if user:
-        form = LoginForm()
         if check_password_hash(user.password, input2):
             login_user(user)
             print('user has been logged in')
