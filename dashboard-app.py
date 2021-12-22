@@ -1634,7 +1634,7 @@ def render_page_content(pathname, is_admin):
     elif pathname == '/login' or current_user.is_authenticated == False:
         print('showing login screen, but user is not authenticated', pathname)
         return login, True
-    elif pathname == '/create':
+    elif pathname == '/create' and current_user.is_authenticated:
         if is_admin == False:
             print('showing create screen, but user has no admin access', pathname)
             return html.Div(
@@ -1652,10 +1652,10 @@ def render_page_content(pathname, is_admin):
             ), False
         print('showing create screen and user has admin access', pathname)
         return create, False
-    elif pathname == '/home':
+    elif pathname == '/home' and current_user.is_authenticated:
         print('showing home screen after logging in', pathname)
         return home, False
-    elif pathname == '/tracking':
+    elif pathname == '/tracking' and current_user.is_authenticated:
         if is_admin == False:
             print('showing tracking screen, but user has no admin access', pathname)
             return html.Div(
@@ -1673,7 +1673,7 @@ def render_page_content(pathname, is_admin):
             ), False
         print('showing tracking screen and user has admin access', pathname)
         return main_page, False
-    elif pathname == '/dashboard':
+    elif pathname == '/dashboard' and current_user.is_authenticated:
         print('showing dashboard screen', pathname)
         return dashboard_page, False
     else:
