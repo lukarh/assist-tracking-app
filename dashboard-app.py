@@ -2198,6 +2198,7 @@ def successful(login, input1, input2, ):
     if user:
         if check_password_hash(user.password, input2):
             login_user(user)
+            print('user has been logged in')
             return '/home', user.admin
         else:
             return dash.no_update, dash.no_update
