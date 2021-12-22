@@ -51,8 +51,6 @@ shottypes = ['AtRim', 'ShortMidRange', 'LongMidRange',
 directions = ['N', 'NEN', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SES',
               'S', 'SWS', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NWN']
 
-tracked_df = pd.read_csv('data/tracked_data.csv')
-
 ##############################################################################
 ##############################################################################
 ##############################################################################
@@ -1727,7 +1725,11 @@ def update_input_toggle_info(graph_toggle):
     Input(component_id='tracked-player-select', component_property='value')
 )
 def update_player_data2(pid):
-    player_df = tracked_df[tracked_df['assistplayerid'] == pid]
+    conn = engine_two.connect()
+    results = conn.execute("SELECT * FROM nbatrackingdata WHERE assistplayerid = %s", (pid,))
+    player_df = pd.DataFrame(results.fetchall(), columns=results.keys())
+    player_df = player_df[~player_df['pass_x'].isnull()]
+    conn.close()
     return player_df.to_dict('records')
 
 
@@ -2196,6 +2198,7 @@ def successful(login, input1, input2, ):
     user = Users.query.filter_by(username=input1).first()
     changed_id = [p['prop_id'] for p in callback_context.triggered][0]
     if user:
+        form = LoginForm()
         if check_password_hash(user.password, input2):
             login_user(user)
             print('user has been logged in')
