@@ -918,8 +918,8 @@ tracking_tab = dbc.Container([
                     labelCheckedClassName="active",
                     inputClassName="btn-check",
                     options=[
-                        {'label': 'Pick & Roll', 'value': 'True', 'disabled': 'True'},
-                        {'label': 'Not Pick & Roll', 'value': 'False', 'disabled': 'True'},
+                        {'label': 'Pick & Roll', 'value': True, 'disabled': 'True'},
+                        {'label': 'Not Pick & Roll', 'value': False, 'disabled': 'True'},
                     ],
                     style={'width': '100%'},  # <---  for external <div>
                     labelStyle={'width': '100%'},  # <---  for <input>
@@ -936,8 +936,8 @@ tracking_tab = dbc.Container([
                     labelCheckedClassName="active",
                     inputClassName="btn-check",
                     options=[
-                        {'label': 'Catch & Shoot', 'value': 'True', 'disabled': 'True'},
-                        {'label': 'Other', 'value': 'False', 'disabled': 'True'},
+                        {'label': 'Catch & Shoot', 'value': True, 'disabled': 'True'},
+                        {'label': 'Other', 'value': False, 'disabled': 'True'},
                     ],
                     style={'width': '100%'},  # <---  for external <div>
                     labelStyle={'width': '100%'},  # <---  for <input>
@@ -1005,7 +1005,8 @@ tracking_tab = dbc.Container([
             dbc.Progress(
                 id='tracking-progress',
                 label="Loading...", value=100,
-                striped=True
+                striped=True,
+                className='mb-3'
             ),
 
             dbc.Alert(
@@ -1095,40 +1096,35 @@ table_tab = html.Div([
                    color='link',
                    className='mb-2 btn btn-outline-success',
                    disabled=False),
-        dbc.Popover(
-            [
-                dbc.PopoverHeader('Update Complete!'),
-                dbc.PopoverBody('The MySQL database has been successfully updated '
-                                'with any new tracked data points. Please wait awhile '
-                                'before committing another database update.'),
-            ],
-            id='save-btn-popover', target='save-btn',  # trigger="legacy",
-        )
+        dbc.Toast(
+            "Unable to Update Database on the back-end with new Tracked Data Tags! "
+            "Please try again or reach out to the admin if you are having issues.",
+            id="no-save-toast",
+            header="Database Update:",
+            is_open=True,
+            dismissable=True,
+            duration=5000,
+            icon="danger",
+            # top: 66 positions the toast below the navbar
+            style={"position": "fixed", "bottom": 95, "right": 790, "width": 350},
+        ),
+        dbc.Toast(
+            "Successfully Updated Database on the back-end with new Tracked Data Tags!",
+            id="save-toast",
+            header="Database Update:",
+            is_open=True,
+            dismissable=True,
+            duration=5000,
+            icon="success",
+            # top: 66 positions the toast below the navbar
+            style={"position": "fixed", "bottom": 95, "right": 790, "width": 350},
+        ),
     ]),
 ])
 
 ##############################################################################
 ################################# Main Page ##################################
 ##############################################################################
-'''
-main_page = dbc.Container([
-    dcc.Store(id='stored-player-data', storage_type='session', data=''),
-    dbc.Row([
-        dbc.Col([
-            dbc.Tabs([
-                dbc.Tab(tracking_tab, label="Track Plays", tab_id='tracking-page'),
-                dbc.Tab(table_tab, label="View Raw Tracked Data", tab_id='data-page'),
-                ],
-                id='main-page-tabs',
-                active_tab="tracking-page",
-            ),
-        ],
-            width={'size': 12}),
-        ]),
-
-
-    ])
-'''
 
 main_page = dbc.Tabs([
     dbc.Tab(tracking_tab, label="Track Plays", tab_id='tracking-page'),
@@ -2403,13 +2399,14 @@ def update_player_data(pid, btn, cs_val, pr_val, hand_val, shotclock_val,
             pass_dist, pass_angle, pass_shot_dist, direction, pass_dist_range = calc_pass_data(throw_x, throw_y,
                                                                                                rec_x, rec_y,
                                                                                                shot_x, shot_y)
-            input_values = [throw_x, throw_y, rec_x, rec_y, shotclock_val,
-                            cs_val, pr_val, hand_val, pass_dist, pass_angle,
+            input_values = [round(throw_x, 0), round(throw_y, 0),
+                            round(rec_x, 0), round(rec_y, 0),
+                            shotclock_val, cs_val, pr_val, hand_val, pass_dist, pass_angle,
                             pass_shot_dist, direction, pass_dist_range, num_dribbles]
             for (col_name, value) in zip(tracking_cols[:-1], input_values):
                 updated_player_df.at[row, col_name] = value
             row_updates_df = updated_player_df[~updated_player_df['pass_dist_range'].isnull()]
-            row_updates_df.to_sql('updates_table', con=db.engine, if_exists='replace', index=False)
+            row_updates_df.to_sql("newtrackeddata", con=engine_two, if_exists='replace', index=False)
             return updated_player_df.to_dict('records'), not is_open
         except:
             return dash.no_update
@@ -2619,6 +2616,43 @@ def update_tracking_progressbar(btn1, btn2, btn3, row, tracked_cols, data):
         except:
             pass
 
+@app.callback(
+    Output(component_id="save-toast", component_property="is_open"),
+    Output(component_id='no-save-toast', component_property="is_open"),
+    Output(component_id='save-btn', component_property='disabled'),
+    Input(component_id='save-btn', component_property='n_clicks'),
+    State(component_id="save-toast", component_property="is_open"),
+    State(component_id='stored-player-data', component_property='data'),
+    State(component_id='stored-player-id', component_property='data'),
+)
+def save_data_to_sql(n_clicks, is_open, player_data, pid, ):
+    changed_id = [p['prop_id'] for p in callback_context.triggered][0]
+    print('saving triggered', changed_id)
+    if 'save-btn' in changed_id:
+        attempts = 0
+        while attempts < 10:
+            try:
+                conn = engine_two.connect()
+                conn.execute("""
+                UPDATE nbatrackingdata
+                SET pass_x = u.pass_x, pass_y = u.pass_y,
+                pass_rec_x = u.pass_rec_x, pass_rec_y = u.pass_rec_y, pass_shotclock = u.pass_shotclock,
+                catch_and_shoot = u.catch_and_shoot, pick_and_roll = u.pick_and_roll,
+                handedness = u.handedness, courtside = u.courtside, pass_distance = u.pass_distance,
+                pass_angle = u.pass_angle, pass_shot_distance = u.pass_shot_distance,
+                direction = u.direction, pass_dist_range = u.pass_dist_range,
+                num_dribbles = u.num_dribbles
+                FROM newtrackeddata as u 
+                WHERE u.row_id = nbatrackingdata.row_id""")
+                conn.close()
+                break
+            except Exception as e:
+                attempts+=1
+                conn.close()
+        if attempts == 10:
+            return is_open, not is_open, is_open
+        return not is_open, is_open, not is_open
+    return False, False, False
 
 if __name__ == '__main__':
     app.run_server(debug=True)
