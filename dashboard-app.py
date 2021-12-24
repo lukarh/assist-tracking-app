@@ -2517,28 +2517,30 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
         input_type = 'thrown' if not input_toggle else 'received'
         print(scatter_names)
         print(shape_names)
-        print(temp_fig_data)
-        print(temp_fig_shapes)
         if len(fig.data) != 1 and input_type in scatter_names:
             try:
                 temp_fig_shapes.pop(shape_names.index('pass-vector'))
                 fig.layout['shapes'] = temp_fig_shapes
                 temp_fig_data.pop(scatter_names.index(input_type))
                 fig.data = temp_fig_data
+                print('passed try case')
             except:
                 temp_fig_data.pop(scatter_names.index(input_type))
                 fig.data = temp_fig_data
+                print('na we finished except case instead')
         fig.add_scatter(x=[round(clickData['points'][0]['x'], 2)],
                         y=[round(clickData['points'][0]['y'], 2)],
                         mode='markers',
                         marker={
                             'size': 7, 'color': 'orange' if not input_toggle else 'black'},
                         name=input_type)
+        print('added new data point')
         if len(fig.data) == 3:
             fig.add_shape(type='line', name='pass-vector', layer='below',
                           x0=fig.data[1]['x'][0], y0=fig.data[1]['y'][0],
                           x1=fig.data[2]['x'][0], y1=fig.data[2]['y'][0],
                           line=dict(color='blue', width=2, dash='dot'))
+            print('creating a new line vector between points')
     return fig
 
 
