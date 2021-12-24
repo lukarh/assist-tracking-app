@@ -2515,6 +2515,7 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
         scatter_names = [data['name'] for data in temp_fig_data]
         shape_names = [shape['name'] for shape in temp_fig_shapes]
         input_type = 'thrown' if not input_toggle else 'received'
+        print('------------------')
         print(scatter_names)
         print(shape_names)
         if len(fig.data) != 1 and input_type in scatter_names:
@@ -2541,7 +2542,10 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
                           x1=fig.data[2]['x'][0], y1=fig.data[2]['y'][0],
                           line=dict(color='blue', width=2, dash='dot'))
             print('creating a new line vector between points')
-    return fig
+        print(scatter_names)
+        print(shape_names)
+        return fig
+    return dash.no_update
 
 
 @app.callback(
