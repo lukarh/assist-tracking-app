@@ -225,7 +225,8 @@ login = dbc.Container(
                 html.Div(
                     [
                         dbc.Label("Username", html_for="username"),
-                        dbc.Input(type="text", id="uname-box", placeholder="Enter username"),
+                        dbc.Input(type="text", id="uname-box",
+                                  placeholder="Enter username", value='GuestUser'),
                         dbc.FormText(
                             "Please enter the username you were provided with to login.",
                             color="secondary",
@@ -236,8 +237,8 @@ login = dbc.Container(
                 html.Div(
                     [
                         dbc.Label("Password", html_for="password"),
-                        dbc.Input(type="password", id="pwd-box", placeholder="Enter password",
-                                  ),
+                        dbc.Input(type="password", id="pwd-box",
+                                  placeholder="Enter password", value='freeaccess'),
                         dbc.FormText(
                             "Please enter the password associated with your account.", color="secondary"
                         ),
@@ -1662,8 +1663,8 @@ def render_page_content(pathname, is_admin):
                     [
                         html.H1("You do not have access to this page.", className="text-danger"),
                         html.Hr(),
-                        html.P("Please talk to the Admin if you believe you were suppose to be"
-                               "granted access"),
+                        html.P("Please contact the Admin if you believe you were suppose to be "
+                               "granted access to this page."),
                     ],
                     fluid=True,
                     className="py-3",
@@ -2514,6 +2515,10 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
         scatter_names = [data['name'] for data in temp_fig_data]
         shape_names = [shape['name'] for shape in temp_fig_shapes]
         input_type = 'thrown' if not input_toggle else 'received'
+        print(scatter_names)
+        print(shape_names)
+        print(temp_fig_data)
+        print(temp_fig_shapes)
         if len(fig.data) != 1 and input_type in scatter_names:
             try:
                 temp_fig_shapes.pop(shape_names.index('pass-vector'))
