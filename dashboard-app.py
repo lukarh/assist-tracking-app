@@ -2506,7 +2506,6 @@ def update_video_playback(btn1, btn2, btn3, pselect, autoplay, data, row, video_
     State(component_id='coordinate-toggle', component_property='value'),
     State(component_id='stored-player-data', component_property='data'),
     State(component_id='row-id', component_property='data'),
-    prevent_initial_callbacks=True
 )
 def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
     if clickData != None and track_toggle:
