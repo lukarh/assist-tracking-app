@@ -2536,6 +2536,11 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
                             'size': 7, 'color': 'orange' if not input_toggle else 'black'},
                         name=input_type)
         print('added new data point')
+        try:
+            print(fig.data[1]['x'][0], fig.data[1]['y'][0],
+                  fig.data[2]['x'][0], fig.data[2]['y'][0],)
+        except:
+            print(fig.data[1]['x'][0], fig.data[1]['y'][0])
         if len(fig.data) == 3:
             fig.add_shape(type='line', name='pass-vector', layer='below',
                           x0=fig.data[1]['x'][0], y0=fig.data[1]['y'][0],
