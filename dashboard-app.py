@@ -2518,7 +2518,7 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
         print('------------------')
         print(scatter_names)
         print(shape_names)
-        print(input_toggle)
+        print(input_type)
         if len(fig.data) != 1 and input_type in scatter_names:
             try:
                 temp_fig_shapes.pop(shape_names.index('pass-vector'))
