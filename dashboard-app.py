@@ -2535,7 +2535,7 @@ def plot_inputs(clickData, track_toggle, input_toggle, data, row_id):
                         marker={
                             'size': 7, 'color': 'orange' if not input_toggle else 'black'},
                         name=input_type)
-        print('added new data point')
+        print('added new data point', round(clickData['points'][0]['x'], 2), round(clickData['points'][0]['y'], 2))
         try:
             print(fig.data[1]['x'][0], fig.data[1]['y'][0],
                   fig.data[2]['x'][0], fig.data[2]['y'][0],)
