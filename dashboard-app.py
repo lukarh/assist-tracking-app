@@ -211,7 +211,9 @@ home = dbc.Container([
            "If you have any ideas or suggestions, please feel free to reach out to me via email."
            ),
     html.H5('Read More'),
-    html.A("Click here for more information!", href="lukarh.github.io/projects/tracking/"),
+    html.P([
+       html.A("Click here for more information!", href="lukarh.github.io/projects/tracking/"),
+    ]),
     html.H5('Developed By:'),
     html.P("Lukar Huang (lwhuang@andrew.cmu.edu)"),
 ])
