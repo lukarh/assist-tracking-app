@@ -175,12 +175,19 @@ home = dbc.Container([
     html.H1('About this App', className='mt-3'),
     html.Hr(className="my-2"),
     html.H5('Motivation'),
-    html.P("Currently, publicly available spatial data is limited to shot coordinate data. "
-           "As a result, this application was built in order to analyze hand-tracked pass "
-           "coordinate data during assist plays and grant the general public with "
-           "insights they may have never seen before. A prior version of this application "
-           "was also presented to former Milwaukee Bucks Analytics Manager Ashley Brio and "
-           "it received positive feedback."),
+    html.P("In the public realm, our access to spatial data is limited to shot coordinates. "
+           "You’ve probably already seen the beautiful visualizations that Kirk Goldsberry has produced over the past "
+           "few years with this data, but what about spatial data looking at pass coordinates? "
+           "Passing is such an integral part of the game and it’s what makes the game so beautiful to watch. "
+           "So how can we visualize passing location data? Can we create any interesting player insights using "
+           "pass coordinates the way shot charts do?"
+    ),
+    html.P("The lack of public access to this type of data motivated the development of this robust and user-friendly "
+           "application. This web-based application allows users to manually hand-track pass coordinate data without "
+           "having to deal with the logistics of data management or data manipulation themselves, "
+           "while also having the capacity to track other data points not captured through tracking cameras via "
+           "Second Spectrum in NBA Arenas."
+    ),
     html.H5('About The Data Source'),
     html.P(["Thanks to Darryl Blackport, the currently available shot tracking data has been made "
             "accessible on his site at ",
@@ -203,9 +210,8 @@ home = dbc.Container([
            "for other features to be hand-tracked as well that may not be recorded via Second Spectrum. "
            "If you have any ideas or suggestions, please feel free to reach out to me via email."
            ),
-    html.H5('Future Additions'),
-    html.P("Please be on the lookout for updates to this app for more fun data!"
-           ),
+    html.H5('Read More'),
+    html.A("Click here for more information!", href="lukarh.github.io/projects/tracking/"),
     html.H5('Developed By:'),
     html.P("Lukar Huang (lwhuang@andrew.cmu.edu)"),
 ])
@@ -1215,7 +1221,7 @@ dashboard_page = dbc.Container([
                 id='graph-filter',
                 options=[
                     {'label': "Pass Origin", 'value': 'pass_'},
-                    {'label': "Pass Target", 'value': ''}
+                    {'label': "Pass Target", 'value': 'pass_rec_'}
                 ],
                 value='pass_',
                 labelStyle={"margin-right": "5px"},
