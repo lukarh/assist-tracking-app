@@ -12,6 +12,7 @@ The lack of public access to this type of data motivated the development of this
 - Framework: Dash (A Python Framework)
 - Libraries: Flask, SQLAlchemy, Plotly, Pandas, SQLite3, NumPy, Dash, Numpy, Dash Bootstrap, Dash Authentication
 - Database: PostgreSQL via Heroku
+- Deployment: Heroku
 
 #### Useful Links
 - [Dash DAQ](https://dash.plotly.com/dash-daq)
@@ -51,6 +52,10 @@ This application has the capacity to keep track of data points not recorded via 
 ## Future Development / Considerations
 - Squash any bugs
 - Create an audit log of changes by user
+- Animated Diagrams
+- Improve Code Readability
+- Better Visualizations
+- Add additional features such as drag / drop to expand SQL database with .csv file
 
 ## Analysis
 
