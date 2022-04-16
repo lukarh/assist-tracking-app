@@ -32,12 +32,12 @@ Available Data Tags: Passer Location, Receiver Location, Handedness of Pass, Num
 #### Live Dashboard for Player Reports
 The Interactive Dashboard builds a player report showing their directional passing tendencies, passing hotspots on the floor, and preferred timing for passes during assist plays. Users can apply multiple filters such as opponent team, date, shot type created, shot clock, minute left in the period, etc. and the dashboard will dynamically update accordingly.
 
-![Dashboard UI](https://i.imgur.com/THXMvEI.png)
+![Dashboard UI](blob:https://i.imgur.com/THXMvEI.png)
 
 #### Create User Login (Admin Access)
 A simple create user feature was added to the application to provide certain users with admin access. While creating an account, the web application can automatically provide feedback as to whether or not the new login credentials are valid to create an access account with.
 
-![Login UI](https://i.imgur.com/wQzGYdf.gif)
+![Login UI](blob:https://i.imgur.com/wQzGYdf.gif)
 
 ###
 
