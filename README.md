@@ -27,17 +27,17 @@ Users can view video playback of plays, manually track plays with new data tags,
 
 Available Data Tags: Passer Location, Receiver Location, Handedness of Pass, Number of Dribbles Prior, Shotclock Left, Pick And Roll, Catch & Shoot
 
-![Tracking UI](https://imgur.com/EyTogdp)
+![tracking-ui](https://user-images.githubusercontent.com/65103724/163692808-90f4c48a-3e3b-4c8d-b4ca-1e19b0cd1792.png)
 
 #### Live Dashboard for Player Reports
 The Interactive Dashboard builds a player report showing their directional passing tendencies, passing hotspots on the floor, and preferred timing for passes during assist plays. Users can apply multiple filters such as opponent team, date, shot type created, shot clock, minute left in the period, etc. and the dashboard will dynamically update accordingly.
 
-![Dashboard UI](https://imgur.com/THXMvEI)
+![dashboard-ui](https://user-images.githubusercontent.com/65103724/163692815-85a7d1e1-f601-417f-801c-277c355b471f.png)
 
 #### Create User Login (Admin Access)
 A simple create user feature was added to the application to provide certain users with admin access. While creating an account, the web application can automatically provide feedback as to whether or not the new login credentials are valid to create an access account with.
 
-![Login UI](https://imgur.com/wQzGYdf)
+![login-ui](https://user-images.githubusercontent.com/65103724/163692813-f7f4f118-1137-4ca4-af5e-bd02189fdabc.gif)
 
 ###
 
