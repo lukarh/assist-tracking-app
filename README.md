@@ -27,7 +27,7 @@ Users can view video playback of plays, manually track plays with new data tags,
 
 Available Data Tags: Passer Location, Receiver Location, Handedness of Pass, Number of Dribbles Prior, Shotclock Left, Pick And Roll, Catch & Shoot
 
-![Tracking UI](blob:https://imgur.com/93a9ef38-8132-46e1-af0b-1837d3701d4c)
+![Tracking UI](https://imgur.com/93a9ef38-8132-46e1-af0b-1837d3701d4c)
 
 #### Live Dashboard for Player Reports
 The Interactive Dashboard builds a player report showing their directional passing tendencies, passing hotspots on the floor, and preferred timing for passes during assist plays. Users can apply multiple filters such as opponent team, date, shot type created, shot clock, minute left in the period, etc. and the dashboard will dynamically update accordingly.
