@@ -2682,5 +2682,14 @@ def save_data_to_sql(n_clicks, is_open, player_data, pid, ):
         return not is_open, is_open, not is_open
     return False, False, False
 
+def gridChallenge(grid):
+    # Write your code here
+    for i in range(len(grid)):
+        grid[i] = "".join(sorted(list(grid[i])))
+        for j in range(len(grid)):
+            if (ord(grid[i][j]) < ord(grid[i-1][j])) and i >= 1:
+                return "NO"
+    return "YES"
+
 if __name__ == '__main__':
     app.run_server(debug=True)
