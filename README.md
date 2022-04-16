@@ -44,7 +44,7 @@ A simple create user feature was added to the application to provide certain use
 
 ## Data Source & Manipulation
 
-Thanks to Darryl Blackport, the currently available shot tracking data has been made accessible on his site at [tracking.pbpstats](tracking.pbpstats.com). That dataset was then filtered for all assisted shots and new columns were created to keep track of new data tags. The manual hand-tracking process was done for 8 players during the 2020-21 season (Julius Randle, Bam Adebayo, Nikola Jokic, Draymond Green, LeBron James, LaMelo Ball, Chris Paul, and James Harden), totaling to 2292 manually tracked data points.
+Thanks to Darryl Blackport, the current available shot tracking data has been made accessible on his site at [tracking.pbpstats](tracking.pbpstats.com). That dataset was then filtered for all assisted shots and new columns were created to keep track of new data tags. The manual hand-tracking process was done for 8 players during the 2020-21 season (Julius Randle, Bam Adebayo, Nikola Jokic, Draymond Green, LeBron James, LaMelo Ball, Chris Paul, and James Harden), totaling to 2292 manually tracked data points.
 
 ## Implications
 This application has the capacity to keep track of data points not recorded via the tracking cameras via Second Spectrum. (e.g. limbs, handedness of passes, etc.) Furthermore, this application has the possibility to be scaled upwards and distributed to teams, trainers, and coaches, who do not have the money to install tracking cameras at their gym provided that they have parsed video footage of gameplay.
