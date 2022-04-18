@@ -30,7 +30,7 @@ To test the app locally, run the following command:
 
 Deploy the App to Heroku, use the [tutorial that outlines the instructions here](https://drive.google.com/file/d/1kowjMGKN6rbxh9n-5q1cP3BkcZ2yOAvo/view).
 
-**NOTE: This Repository does not have access to database key**
+**NOTE: This Repository does not have access to SQL database key**
 
 ## Application
 
