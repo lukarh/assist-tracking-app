@@ -21,10 +21,15 @@ The lack of public access to this type of data motivated the development of this
 
 ## Deployment
 In a terminal at this directory, run the following command to install all necessary libraries / packages:
+
 ```pip install -r requirements.txt```
+
 To test the app locally, run the following command:
+
 ```python dashboard-app.py```
+
 Deploy the App to Heroku, use the [tutorial that outlines the instructions here](https://drive.google.com/file/d/1kowjMGKN6rbxh9n-5q1cP3BkcZ2yOAvo/view).
+
 **NOTE: This Repository does not have access to database key**
 
 ## Application
