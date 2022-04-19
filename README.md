@@ -72,7 +72,15 @@ This application has the capacity to keep track of data points not recorded via 
 
 ## Analysis
 
-Please click here for the article showcasing the analysis.
+<p align="center">
+  <img src="https://i.imgur.com/6ROqNrx.png">
+</p>
+<p align="center">Assist Rose Plots - Roses binned by Pass Distance</p>
+
+<p align="center">
+  <img src="https://i.imgur.com/GZLSLj7.png">
+</p>
+<p align="center">Assist Rose Plots - Roses binned by Shottype</p>
 
 ## [View the application](https://tracking-dashboard-app.herokuapp.com/home)
 
