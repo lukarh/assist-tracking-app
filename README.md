@@ -64,6 +64,8 @@ This application has the capacity to keep track of data points not recorded via 
 
 ## Future Development / Considerations
 - Squash any bugs
+- Crowd Source Tracking Data (open tracking to the public)
+- Better Visualizations
 - Create an audit log of changes by user
 - Animated Diagrams
 - Improve Code Readability
