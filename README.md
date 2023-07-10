@@ -1,5 +1,7 @@
 # assist-tracking-app
 
+## [Please visit the source code of Version 2.0.0 of this web-application by clicking here](https://github.com/lukarh/assists-tracking-dash-app-v2)
+
 ## Motivation
 
 In the public realm, our access to spatial data is limited to shot coordinates. You've probably already seen the [beautiful visualizations](https://www.instagram.com/kirkgoldsberry/?hl=en) that Kirk Goldsberry has produced over the past few years with this data, but what about spatial data looking at pass coordinates? Passing is such an integral part of the game and [it's what makes the game so beautiful to watch](https://www.youtube.com/watch?v=NsBGF1fjXvY&ab_channel=EvinGualberto). So how can we visualize passing location data? Can we create any interesting player insights using pass coordinates the way shot charts do?
