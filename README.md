@@ -1,6 +1,6 @@
 # assist-tracking-app
 
-### [Please visit the source code of Version 2.0.0 of this web-application by clicking here](https://github.com/lukarh/assists-tracking-dash-app-v2)
+### [Please visit the source code of Version 2.0.0 of this web-application and read more about it by clicking here](https://github.com/lukarh/assists-tracking-dash-app-v2)
 
 ## Motivation
 
